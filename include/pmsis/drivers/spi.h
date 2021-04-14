@@ -95,6 +95,24 @@ typedef enum
                          */
 } pi_spi_phase_e;
 
+typedef enum
+{
+
+    PI_SPI_ENABLE_BYTEALIGN = 0,
+
+    PI_SPI_DISABLE_BYTEALIGN = 1
+
+} pi_spi_byte_align_e;
+
+typedef enum
+{
+
+    PI_SPI_BIG_ENDIAN = 1,
+
+    PI_SPI_LITTLE_ENDIAN = 0
+
+} pi_spi_endian_e;
+
 /** \struct pi_spi_conf_t
  * \brief SPI master configuration structure.
  *
@@ -105,10 +123,10 @@ struct pi_spi_conf
 {
     int max_baudrate;           /*!< Maximum baudrate for the SPI bitstream which can
                                   be used with the opened device . */
-    char wordsize;              /*!< Wordsize of the elements in the bitstream. Can
+    pi_spi_wordsize_e wordsize;              /*!< Wordsize of the elements in the bitstream. Can
                                   be PI_SPI_WORDSIZE_8 for 8 bits data or PI_SPI_WORDSIZE_32 for 32 bits
                                   data. This is used to interpret the endianness. */
-    char big_endian;            /*!< If 1, the elements are stored in memory in a
+    pi_spi_endian_e big_endian;            /*!< If 1, the elements are stored in memory in a
                                   big-endian way, i.e. the most significant byte is stored at the lowest
                                   address. This is taken into account only if the wordsize is 32 bits. */
     pi_spi_polarity_e polarity; /*!< Polarity of the clock. */
@@ -121,6 +139,7 @@ struct pi_spi_conf
                                   using copies. */
     int max_snd_chunk_size;     /*!< Specifies maximum chunk size for sending when
                                   using copies. */
+    pi_spi_byte_align_e byte_align;             /*!< Specifies SPIM byte alignment configuration bitfield 0b0: enable byte alignment 0b1: disable byte alignment */
 };
 
 /** \enum pi_spi_ioctl_e
