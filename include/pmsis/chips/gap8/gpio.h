@@ -17,8 +17,6 @@
 #ifndef __CHIPS_GAP8_DRIVERS_GPIO_H__
 #define __CHIPS_GAP8_DRIVERS_GPIO_H__
 
-#include "pmsis/chips/gap8/pad.h"
-
 /**
  * @ingroup groupChips
  */
